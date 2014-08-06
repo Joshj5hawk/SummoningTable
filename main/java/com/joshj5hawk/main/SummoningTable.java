@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 import com.joshj5hawk.block.BlockSummoningTable;
+import com.joshj5hawk.handler.ConfigurationFile;
 import com.joshj5hawk.handler.STFuelHandler;
 import com.joshj5hawk.handler.STGUIHandler;
 import com.joshj5hawk.lib.Strings;
@@ -12,6 +13,7 @@ import com.joshj5hawk.recipies.STCraftingRecipies;
 import com.joshj5hawk.recipies.STSmeltingRecipies;
 import com.joshj5hawk.tileentity.TileEntitySummoningTable;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -41,6 +43,9 @@ public class SummoningTable
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent preEvent)
 	{
+		//Config
+		ConfigurationFile.init(event.getSuggestedConfigurationFile());
+		FMLCommonHandler.instance().bus().register(new ConfigurationFile());
 		//CreativeTab
 		tabSummoningTable = new CreativeTabs("tabSummoningTable")
 		{
