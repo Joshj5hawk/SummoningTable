@@ -1,0 +1,16 @@
+[
+{
+  "modid": "summoningtable",
+  "name": "Summoning Table",
+  "description": "A mod that adds a summoning table to summon your favorite mobs!",
+  "version": "0.1a",
+  "mcversion": "${mcversion}",
+  "url": "http://www.joshj5hawk.com/SummoningTable",
+  "updateUrl": "",
+  "authorList": ["JoshJ5Hawk"],
+  "credits": "Code and crappy art: JoshJ5Hawk. Much better and awesome art: Hotel_Califonia",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
