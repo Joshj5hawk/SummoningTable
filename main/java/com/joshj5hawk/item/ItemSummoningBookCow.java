@@ -15,10 +15,11 @@ import net.minecraft.world.World;
 
 public class ItemSummoningBookCow extends Item
 {
+
 	public ItemSummoningBookCow()
 	{
 		this.setMaxStackSize(1);
-		this.setMaxDamage(64);
+		this.setMaxDamage(63);
 	}
 	
 	@Override
