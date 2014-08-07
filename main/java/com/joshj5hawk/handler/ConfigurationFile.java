@@ -12,7 +12,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class ConfigurationFile 
 {
 	public static Configuration config;
-	public static boolean easyMode = false;
+	public static boolean easyMode = true;
 	
 	public static void init(File configFile)
 	{
@@ -26,7 +26,7 @@ public class ConfigurationFile
 	
 	private static void loadConfiguration()
 	{
-		easyMode = config.getBoolean("configEasy", Configuration.CATEGORY_GENERAL, true, "Easy recipes (iron, gold, diamond, emerald)?");
+		easyMode = config.getBoolean("easyMode", Configuration.CATEGORY_GENERAL, true, "Easy recipes (iron, gold, diamond, emerald)?");
 		
 		if(config.hasChanged())
 		{

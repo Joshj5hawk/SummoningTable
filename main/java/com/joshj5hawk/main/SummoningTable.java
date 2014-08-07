@@ -44,7 +44,7 @@ public class SummoningTable
 	public void PreInit(FMLPreInitializationEvent preEvent)
 	{
 		//Config
-		ConfigurationFile.init(event.getSuggestedConfigurationFile());
+		ConfigurationFile.init(preEvent.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationFile());
 		//CreativeTab
 		tabSummoningTable = new CreativeTabs("tabSummoningTable")

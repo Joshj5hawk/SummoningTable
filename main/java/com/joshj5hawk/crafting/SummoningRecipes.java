@@ -1,5 +1,7 @@
 package com.joshj5hawk.crafting;
 
+import com.joshj5hawk.handler.ConfigurationFile;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,9 +20,21 @@ public class SummoningRecipes
 	//RECIPES HERE
 	public static ItemStack getOutput(Item item, Item item2)
 	{
-		if(item == Items.diamond && item2 == Items.leather || item == Items.leather && item2 == Items.diamond)
-			return new ItemStack(Items.spawn_egg, 1, 92);
+		if(ConfigurationFile.easyMode == true)
+		{
+			if(item == Items.iron_ingot && item2 == Items.leather || item == Items.leather && item2 == Items.diamond)
+				return new ItemStack(Items.spawn_egg, 1, 92);
 		
-		return null;
+			return null;
+		}
+		else
+		{
+			if(item == Items.diamond && item2 == Items.leather || item == Items.leather && item2 == Items.iron_ingot)
+			{
+				return new ItemStack(Items.spawn_egg, 1, 92);
+			}
+			
+			return null;
+		}
 	}
 }
