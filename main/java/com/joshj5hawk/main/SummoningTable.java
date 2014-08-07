@@ -8,6 +8,7 @@ import com.joshj5hawk.block.BlockSummoningTable;
 import com.joshj5hawk.handler.ConfigurationFile;
 import com.joshj5hawk.handler.STFuelHandler;
 import com.joshj5hawk.handler.STGUIHandler;
+import com.joshj5hawk.item.ItemSummoningBookCow;
 import com.joshj5hawk.lib.Strings;
 import com.joshj5hawk.recipies.STCraftingRecipies;
 import com.joshj5hawk.recipies.STSmeltingRecipies;
@@ -32,6 +33,9 @@ public class SummoningTable
 	public static Block blockSummoningTableIdle;
 	public static Block blockSummoningTableActive;
 	
+	//Items
+	public static Item itemSummoningBookCow;
+	
 	public static final int guiIDSummoningTable = 0;
 	
 	//Tabs
@@ -44,7 +48,7 @@ public class SummoningTable
 	public void PreInit(FMLPreInitializationEvent preEvent)
 	{
 		//Config
-		ConfigurationFile.init(event.getSuggestedConfigurationFile());
+		ConfigurationFile.init(preEvent.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationFile());
 		//CreativeTab
 		tabSummoningTable = new CreativeTabs("tabSummoningTable")
@@ -57,10 +61,15 @@ public class SummoningTable
 		};
 		
 		//Init
+		//Blocks
 		blockSummoningTableIdle = new BlockSummoningTable(false).setBlockName("blockSummoningTableIdle").setCreativeTab(tabSummoningTable).setHardness(3.5F);
 		blockSummoningTableActive = new BlockSummoningTable(true).setBlockName("blockSummoningTableActive").setHardness(3.5F);
 		
+		//Items
+		itemSummoningBookCow = new ItemSummoningBookCow().setUnlocalizedName("itemSummoningBookCow").setCreativeTab(tabSummoningTable);
+		
 		//Register
+		//blocks
 		GameRegistry.registerBlock(blockSummoningTableIdle, "blockSummoningTableIdle");
 		GameRegistry.registerBlock(blockSummoningTableActive, "blockSummoningTableActive");
 		
