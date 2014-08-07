@@ -73,6 +73,9 @@ public class SummoningTable
 		GameRegistry.registerBlock(blockSummoningTableIdle, "blockSummoningTableIdle");
 		GameRegistry.registerBlock(blockSummoningTableActive, "blockSummoningTableActive");
 		
+		//Items
+		GameRegistry.registerItem(itemSummoningBookCow, "itemSummoningTableCow");
+		
 		//TileEntity
 		GameRegistry.registerTileEntity(TileEntitySummoningTable.class, "summoningTable");
 	}

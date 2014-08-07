@@ -1,6 +1,7 @@
 package com.joshj5hawk.crafting;
 
 import com.joshj5hawk.handler.ConfigurationFile;
+import com.joshj5hawk.main.SummoningTable;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -23,7 +24,7 @@ public class SummoningRecipes
 		if(ConfigurationFile.easyMode == true)
 		{
 			if(item == Items.iron_ingot && item2 == Items.leather || item == Items.leather && item2 == Items.diamond)
-				return new ItemStack(Items.spawn_egg, 1, 92);
+				return new ItemStack(SummoningTable.itemSummoningBookCow, 1);
 		
 			return null;
 		}
@@ -31,7 +32,7 @@ public class SummoningRecipes
 		{
 			if(item == Items.diamond && item2 == Items.leather || item == Items.leather && item2 == Items.iron_ingot)
 			{
-				return new ItemStack(Items.spawn_egg, 1, 92);
+				return new ItemStack(SummoningTable.itemSummoningBookCow, 1, 32);
 			}
 			
 			return null;
