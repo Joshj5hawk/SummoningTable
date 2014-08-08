@@ -8,7 +8,7 @@ import com.joshj5hawk.block.BlockSummoningTable;
 import com.joshj5hawk.handler.ConfigurationFile;
 import com.joshj5hawk.handler.STFuelHandler;
 import com.joshj5hawk.handler.STGUIHandler;
-import com.joshj5hawk.item.ItemSummoningBookCow;
+import com.joshj5hawk.item.ItemSummoningBook;
 import com.joshj5hawk.lib.Strings;
 import com.joshj5hawk.recipies.STCraftingRecipies;
 import com.joshj5hawk.recipies.STSmeltingRecipies;
@@ -34,7 +34,22 @@ public class SummoningTable
 	public static Block blockSummoningTableActive;
 	
 	//Items
+	//Summoning Books
 	public static Item itemSummoningBookCow;
+	public static Item itemSummoningBookPig;
+	public static Item itemSummoningBookSheep;
+	public static Item itemSummoningBookChicken;
+	public static Item itemSummoningBookMooshroom;
+	public static Item itemSummoningBookVillager;
+	public static Item itemSummoningBookSnowGolem;
+	public static Item itemSummoningBookBat;
+	public static Item itemSummoningBookHorse;
+	public static Item itemSummoningBookOcelot;
+	public static Item itemSummoningBookSquid;
+	//Crafting Orbs
+	public static Item itemPassiveCraftingOrb;
+	public static Item itemNeutralCraftingOrb;
+	public static Item itemHostileCraftingOrb;
 	
 	public static final int guiIDSummoningTable = 0;
 	
@@ -66,7 +81,19 @@ public class SummoningTable
 		blockSummoningTableActive = new BlockSummoningTable(true).setBlockName("blockSummoningTableActive").setHardness(3.5F);
 		
 		//Items
-		itemSummoningBookCow = new ItemSummoningBookCow().setUnlocalizedName("itemSummoningBookCow").setCreativeTab(tabSummoningTable);
+		//Summoning Books
+		itemSummoningBookCow = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookCow").setTagInt("mob", 92);
+		itemSummoningBookPig = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookPig");
+		itemSummoningBookSheep = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookSheep");
+		itemSummoningBookChicken = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookChicken");
+		itemSummoningBookMooshroom = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookMooshroom");
+		itemSummoningBookVillager = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookVillager");
+		itemSummoningBookSnowGolem = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookSnowGolem");
+		
+		//Crafting Orbs
+		itemPassiveCraftingOrb = new Item().setUnlocalizedName("itemPassiveCraftingOrb").setCreativeTab(tabSummoningTable);
+		itemNeutralCraftingOrb = new Item().setUnlocalizedName("itemNeutralCraftingOrb").setCreativeTab(tabSummoningTable);
+		itemHostileCraftingOrb = new Item().setUnlocalizedName("itemHostileCraftingOrb").setCreativeTab(tabSummoningTable);
 		
 		//Register
 		//blocks
@@ -74,7 +101,11 @@ public class SummoningTable
 		GameRegistry.registerBlock(blockSummoningTableActive, "blockSummoningTableActive");
 		
 		//Items
-		GameRegistry.registerItem(itemSummoningBookCow, "itemSummoningTableCow");
+		GameRegistry.registerItem(itemSummoningBookCow, "itemSummoningBookCow");
+		GameRegistry.registerItem(itemSummoningBookVillager, "itemSummoningBookVillager");
+		GameRegistry.registerItem(itemPassiveCraftingOrb, "itemPassiveCraftingOrb");
+		GameRegistry.registerItem(itemNeutralCraftingOrb, "itemNeutralCraftingOrb");
+		GameRegistry.registerItem(itemHostileCraftingOrb, "itemHostileCraftingOrb");
 		
 		//TileEntity
 		GameRegistry.registerTileEntity(TileEntitySummoningTable.class, "summoningTable");

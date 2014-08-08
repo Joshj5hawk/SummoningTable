@@ -9,17 +9,21 @@ import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Facing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemSummoningBookCow extends Item
+import com.joshj5hawk.main.SummoningTable;
+
+public class ItemSummoningBook extends Item
 {
 
-	public ItemSummoningBookCow()
+	public ItemSummoningBook()
 	{
 		this.setMaxStackSize(1);
 		this.setMaxDamage(63);
+		this.setCreativeTab(SummoningTable.tabSummoningTable);
 	}
 	
 	@Override
@@ -31,6 +35,9 @@ public class ItemSummoningBookCow extends Item
 		}
 		else
 		{
+			if(itemstack.getTagCompound() == null) itemstack.setTagCompound(new NBTTagCompound());
+			if(!itemstack.getTagCompound().hasKey("mob")) return false;
+			
 			Block block = world.getBlock(x, y, z);
 			x += Facing.offsetsXForSide[i];
 			y += Facing.offsetsYForSide[i];
@@ -41,23 +48,29 @@ public class ItemSummoningBookCow extends Item
 			{
 				d0 = 0.5D;
 			}
-			
-			Entity entity = spawnCreature(world, 92, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
-			
-			if(entity != null)
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookCow.getUnlocalizedName()))
 			{
-				if(entity instanceof EntityLivingBase && itemstack.hasDisplayName())
-				{
-					((EntityLiving)entity).setCustomNameTag(itemstack.getDisplayName());
-				}
-				
-				if(!player.capabilities.isCreativeMode)
-				{
-					itemstack.damageItem(1, player);
-				}
+				Entity entity = spawnCreature(world, itemstack.getTagCompound().getInteger("mob"), (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(entity, itemstack, player);
 			}
 		}
 		return true;
+	}
+	
+	public static void spawn(Entity entity, ItemStack itemstack, EntityPlayer player)
+	{
+		if(entity != null)
+		{
+			if(entity instanceof EntityLivingBase && itemstack.hasDisplayName())
+			{
+				((EntityLiving)entity).setCustomNameTag(itemstack.getDisplayName());
+			}
+			
+			if(!player.capabilities.isCreativeMode)
+			{
+				itemstack.damageItem(1, player);
+			}
+		}
 	}
 	
 	public static Entity spawnCreature(World world, int entityID, double x, double y, double z)

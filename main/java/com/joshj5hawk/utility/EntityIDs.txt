@@ -1,0 +1,40 @@
+/*Mobs
+	 * NAME:ID
+	 * -Passive-
+	 * Cow, 92
+	 * Pig, 90
+	 * Sheep, 91
+	 * Chicken, 93
+	 * Mooshroom, 96
+	 * Villager, 120
+	 * Snow Golem, 97
+	 * Bat, 65
+	 * Horse, 100
+	 * Ocelot, 98
+	 * Squid, 94
+	 * 
+	 * -Neutral-
+	 * Enderman, 58
+	 * Zombie Pigman, 57
+	 * Iron Golem, 99
+	 * Wolf, 95
+	 * 
+	 * 
+	 * -Hostile-
+	 * Creeper, 50
+	 * Zombie, 54
+	 * Spider, 52
+	 * Cave Spider, 59
+	 * Skeleton, 51
+	 * Silverfish, 60
+	 * Slime, 55
+	 * Wither Skeleton, 51(Yes, same as Skele)
+	 * Magma Cube, 62
+	 * Blaze, 61
+	 * Ghast, 56
+	 * Witch, 66
+	 * 
+	 * -Boss-
+	 * Ender Dragon, 63
+	 * Wither, 64
+	 */
