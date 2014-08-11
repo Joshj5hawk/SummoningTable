@@ -24,7 +24,7 @@ public class SummoningRecipes
 		if(ConfigurationFile.easyMode == true)
 		{
 			if(item == Items.iron_ingot && item2 == Items.leather || item == Items.leather && item2 == Items.diamond)
-				return new ItemStack(SummoningTable.itemSummoningBookCow, 1);
+				return new ItemStack(SummoningTable.itemSummoningBookCow.setMaxDamage(63), 1);
 		
 			return null;
 		}
@@ -32,7 +32,7 @@ public class SummoningRecipes
 		{
 			if(item == Items.diamond && item2 == Items.leather || item == Items.leather && item2 == Items.iron_ingot)
 			{
-				return new ItemStack(SummoningTable.itemSummoningBookCow, 1, 32);
+				return new ItemStack(SummoningTable.itemSummoningBookCow.setMaxDamage(5), 1);
 			}
 			
 			return null;

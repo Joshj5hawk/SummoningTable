@@ -1,5 +1,7 @@
 package com.joshj5hawk.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
@@ -9,21 +11,25 @@ import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Facing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import com.joshj5hawk.handler.ConfigurationFile;
 import com.joshj5hawk.main.SummoningTable;
 
 public class ItemSummoningBook extends Item
 {
-
 	public ItemSummoningBook()
 	{
 		this.setMaxStackSize(1);
 		this.setMaxDamage(63);
 		this.setCreativeTab(SummoningTable.tabSummoningTable);
+	}
+	
+	public void addInformation(List list)
+	{
+		list.add("Full Summons 64 Cows");
 	}
 	
 	@Override
@@ -35,9 +41,6 @@ public class ItemSummoningBook extends Item
 		}
 		else
 		{
-			if(itemstack.getTagCompound() == null) itemstack.setTagCompound(new NBTTagCompound());
-			if(!itemstack.getTagCompound().hasKey("mob")) return false;
-			
 			Block block = world.getBlock(x, y, z);
 			x += Facing.offsetsXForSide[i];
 			y += Facing.offsetsYForSide[i];
@@ -48,31 +51,137 @@ public class ItemSummoningBook extends Item
 			{
 				d0 = 0.5D;
 			}
+			
 			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookCow.getUnlocalizedName()))
 			{
-				Entity entity = spawnCreature(world, itemstack.getTagCompound().getInteger("mob"), (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
-				spawn(entity, itemstack, player);
+				Entity entity = spawnCreature(world, 92, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Cow");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookPig.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 90, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Pig");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookSheep.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 91, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Sheep");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookChicken.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 93, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Chicken");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookMooshroom.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 96, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Mooshroom");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookVillager.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 120,(double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Villager");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookSnowGolem.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 97, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Snow Golem");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookBat.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 65, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Bat");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookHorse.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 100, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Horse");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookOcelot.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 98, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Ocelot");
+				}
+			}
+			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookSquid.getUnlocalizedName()))
+			{
+				Entity entity = spawnCreature(world, 99, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				spawn(itemstack, entity, player);
+				
+				if(ConfigurationFile.debugMode == true)
+				{
+					System.out.println("Spawned Squid");
+				}
 			}
 		}
 		return true;
 	}
 	
-	public static void spawn(Entity entity, ItemStack itemstack, EntityPlayer player)
+	public static void spawn(ItemStack itemstack, Entity entity, EntityPlayer player)
 	{
 		if(entity != null)
-		{
-			if(entity instanceof EntityLivingBase && itemstack.hasDisplayName())
 			{
-				((EntityLiving)entity).setCustomNameTag(itemstack.getDisplayName());
+				if(entity instanceof EntityLivingBase && itemstack.hasDisplayName())
+				{
+					((EntityLiving)entity).setCustomNameTag(itemstack.getDisplayName());
+				}
+				
+				if(!player.capabilities.isCreativeMode)
+				{
+					itemstack.damageItem(1, player);
+					System.out.println("Damaged Item");
+				}
 			}
-			
-			if(!player.capabilities.isCreativeMode)
-			{
-				itemstack.damageItem(1, player);
-			}
-		}
 	}
-	
 	public static Entity spawnCreature(World world, int entityID, double x, double y, double z)
 	{
 		Entity entity = null;
