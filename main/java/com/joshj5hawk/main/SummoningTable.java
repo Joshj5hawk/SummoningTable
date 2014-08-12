@@ -52,6 +52,7 @@ public class SummoningTable
 	public static Item itemPassiveCraftingOrb;
 	public static Item itemNeutralCraftingOrb;
 	public static Item itemHostileCraftingOrb;
+	public static Item itemSummoningCore;
 	
 	public static final int guiIDSummoningTable = 0;
 	
@@ -98,9 +99,10 @@ public class SummoningTable
 		itemSummoningBookSquid = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookSquid").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconSquid16" : Strings.modid + ":iconSquid64");
 		
 		//Crafting Orbs
-		itemPassiveCraftingOrb = new Item().setUnlocalizedName("itemPassiveCraftingOrb").setCreativeTab(tabSummoningTable);
-		itemNeutralCraftingOrb = new Item().setUnlocalizedName("itemNeutralCraftingOrb").setCreativeTab(tabSummoningTable);
-		itemHostileCraftingOrb = new Item().setUnlocalizedName("itemHostileCraftingOrb").setCreativeTab(tabSummoningTable);
+		itemPassiveCraftingOrb = new Item().setUnlocalizedName("itemPassiveCraftingOrb").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + "iconPassiveOrb16" : Strings.modid + ":iconPassiveOrb64");
+		itemNeutralCraftingOrb = new Item().setUnlocalizedName("itemNeutralCraftingOrb").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + "iconNeutralOrb16" : Strings.modid + ":iconNeutralOrb64");
+		itemHostileCraftingOrb = new Item().setUnlocalizedName("itemHostileCraftingOrb").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + "iconHostileOrb16" : Strings.modid + ":iconHostileOrb64");
+		itemSummoningCore = new Item().setUnlocalizedName("itemSummoningCore").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + "iconSummoningCore16" : Strings.modid + ":iconSummoningCore64");
 		
 		//Register
 		//blocks
