@@ -125,6 +125,7 @@ public class SummoningTable
 		GameRegistry.registerItem(itemPassiveCraftingOrb, "itemPassiveCraftingOrb");
 		GameRegistry.registerItem(itemNeutralCraftingOrb, "itemNeutralCraftingOrb");
 		GameRegistry.registerItem(itemHostileCraftingOrb, "itemHostileCraftingOrb");
+		GameRegistry.registerItem(itemSummoningCore, "itemSummoningCore");
 		
 		//TileEntity
 		GameRegistry.registerTileEntity(TileEntitySummoningTable.class, "summoningTable");

@@ -16,6 +16,7 @@ item.itemSummoningBookSquid.name=Squid Summoning Book
 item.itemPassiveCraftingOrb.name=Passive Crafting Orb
 item.itemNeutralCraftingOrb.name=Neutral Crafting Orb
 item.itemHostileCraftingOrb.name=Hostile Crafting Orb
+item.itemSummoningCore.name=Summoning Orb
 
 tile.blockSummoningTableIdle.name=Summoning Table
 container.summoningTable=Summoning
