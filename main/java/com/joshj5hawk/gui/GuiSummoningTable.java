@@ -15,7 +15,7 @@ import com.joshj5hawk.tileentity.TileEntitySummoningTable;
 public class GuiSummoningTable extends GuiContainer
 {
 
-	private ResourceLocation texutre = new ResourceLocation(Strings.modid + ":" + "/textures/gui/summoningTable.png");
+	private ResourceLocation texutre = new ResourceLocation(Strings.modid + ":" + "textures/gui/summoningTable.png");
 	private TileEntitySummoningTable summoningTable;
 	
 	public GuiSummoningTable(InventoryPlayer invPlayer, TileEntitySummoningTable tileEntityST) 

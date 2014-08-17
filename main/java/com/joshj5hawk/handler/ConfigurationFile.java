@@ -28,7 +28,7 @@ public class ConfigurationFile
 	
 	private static void loadConfiguration()
 	{
-		easyMode = config.getBoolean("easyMode", Configuration.CATEGORY_GENERAL, true, "Easy recipes (iron, gold, diamond, emerald)?");
+		easyMode = config.getBoolean("easyMode", Configuration.CATEGORY_GENERAL, false, "Easy recipes (iron, gold, diamond, emerald)?");
 		debugMode = config.getBoolean("debugMode", Configuration.CATEGORY_GENERAL, false, "Print Certain info to console");
 		lowRes = config.getBoolean("lowRes", Configuration.CATEGORY_GENERAL, false, "Low res, 16x16 textures");
 		

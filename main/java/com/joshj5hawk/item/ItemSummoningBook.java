@@ -154,7 +154,7 @@ public class ItemSummoningBook extends Item
 			}
 			if(itemstack.getUnlocalizedName().equals(SummoningTable.itemSummoningBookSquid.getUnlocalizedName()))
 			{
-				Entity entity = spawnCreature(world, 99, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
+				Entity entity = spawnCreature(world, 94, (double)x + 0.5D, (double)y + d0, (double)z + 0.5D);
 				spawn(itemstack, entity, player);
 				
 				if(ConfigurationFile.debugMode == true)
