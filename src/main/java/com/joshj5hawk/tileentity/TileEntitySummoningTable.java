@@ -225,7 +225,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 
 	public int getSummoningProgressScaled(int i) 
 	{
-		return (dualCookTime * i) / this.summoningSpeed;
+		return (dualCookTime * i) / summoningSpeed;
 	}
 
 	public int getFuelRemainingScaled(int i)
@@ -240,7 +240,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 			return false;
 		}
 
-		ItemStack itemstack = SummoningRecipes.getSummoningResult(slots[0].getItem(), slots[1].getItem());
+		ItemStack itemstack = SummoningRecipes.INSTANCE.getSummoningResult(slots[0].getItem(), slots[1].getItem());
 
 		if (itemstack == null) 
 		{
@@ -271,7 +271,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 	{
 		if (canSummon()) 
 		{
-			ItemStack itemstack = SummoningRecipes.getSummoningResult(slots[0].getItem(), slots[1].getItem());
+			ItemStack itemstack = SummoningRecipes.INSTANCE.getSummoningResult(slots[0].getItem(), slots[1].getItem());
 
 			if (slots[3] == null) 
 			{
@@ -323,7 +323,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 
 		if(!worldObj.isRemote) 
 		{
-			if (this.hasItemFuel(this.slots[2]) && this.dualFuel <= (this.maxFuel - this.getItemFuel(this.slots[2]))) 
+			if (this.hasItemFuel(this.slots[2]) && this.dualFuel <= (maxFuel - getItemFuel(this.slots[2]))) 
 			{
 				this.dualFuel += getItemFuel(this.slots[2]);
 
@@ -344,7 +344,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 			{
 				dualCookTime++;
 
-				if (this.dualCookTime == this.summoningSpeed) 
+				if (this.dualCookTime == summoningSpeed) 
 				{
 					this.dualCookTime = 0;
 					this.summonItem();

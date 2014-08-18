@@ -4,6 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+import com.joshj5hawk.crafting.SummoningRecipes;
 import com.joshj5hawk.main.SummoningTable;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,6 +14,7 @@ public class STCraftingRecipies
 	
 	public static void mainRegistry()
 	{
+	    SummoningRecipes.INSTANCE.registerBaseRecipes();
 		shapedRecipies();
 		shapelessRecipies();
 	}

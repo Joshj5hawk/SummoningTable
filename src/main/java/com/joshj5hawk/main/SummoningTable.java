@@ -33,21 +33,9 @@ public class SummoningTable
 	public static Block blockSummoningTableIdle;
 	public static Block blockSummoningTableActive;
 	
-	//Items
-	//Summoning Books
+	// Items
 	public static Item itemSummoningBook;
-	
-	public static Item itemSummoningBookCow;
-	public static Item itemSummoningBookPig;
-	public static Item itemSummoningBookSheep;
-	public static Item itemSummoningBookChicken;
-	public static Item itemSummoningBookMooshroom;
-	public static Item itemSummoningBookVillager;
-	public static Item itemSummoningBookSnowGolem;
-	public static Item itemSummoningBookBat;
-	public static Item itemSummoningBookHorse;
-	public static Item itemSummoningBookOcelot;
-	public static Item itemSummoningBookSquid;
+
 	//Crafting Orbs
 	public static Item itemPassiveCraftingOrb;
 	public static Item itemNeutralCraftingOrb;
@@ -58,7 +46,6 @@ public class SummoningTable
 	
 	//Tabs
 	public static CreativeTabs tabSummoningTable;
-	
 	
 	@Instance(Strings.modid)
 	public static SummoningTable instance;
@@ -86,18 +73,9 @@ public class SummoningTable
 		
 		//Items
 		//Summoning Books
-		itemSummoningBookCow = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookCow").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconCow16" : Strings.modid + ":iconCow64");
-		itemSummoningBookPig = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookPig").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconPig16" : Strings.modid + ":iconPig64");
-		itemSummoningBookSheep = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookSheep").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconSheep16" : Strings.modid + ":iconSheep64");
-		itemSummoningBookChicken = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookChicken").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconChicken16" : Strings.modid + ":iconChicken64");
-		itemSummoningBookMooshroom = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookMooshroom").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconMooshroom16" : Strings.modid + ":iconMooshroom64");
-		itemSummoningBookVillager = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookVillager").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconVillager16" : Strings.modid + ":iconVillager64");
-		itemSummoningBookSnowGolem = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookSnowGolem").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconSnowGolem16" : Strings.modid + ":iconSnowGolem64");
-		itemSummoningBookBat = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookBat").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconBat16" : Strings.modid + ":iconBat64");
-		itemSummoningBookHorse = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookHorse").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconHorse16" : Strings.modid + ":iconHorse64");
-		itemSummoningBookOcelot = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookOcelot").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconOcelot16" : Strings.modid + ":iconOcelot64");
-		itemSummoningBookSquid = new ItemSummoningBook().setUnlocalizedName("itemSummoningBookSquid").setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconSquid16" : Strings.modid + ":iconSquid64");
-		
+		String suffix = ConfigurationFile.lowRes ? "16" : "64";
+		itemSummoningBook = new ItemSummoningBook().setUnlocalizedName("itemSummoningBook").setTextureName(Strings.modid + ":iconBook" + suffix);
+
 		//Crafting Orbs
 		itemPassiveCraftingOrb = new Item().setUnlocalizedName("itemPassiveCraftingOrb").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconPassiveOrb16" : Strings.modid + ":iconPassiveOrb64").setMaxStackSize(1);
 		itemNeutralCraftingOrb = new Item().setUnlocalizedName("itemNeutralCraftingOrb").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconNeutralOrb16" : Strings.modid + ":iconNeutralOrb64").setMaxStackSize(1);
@@ -110,17 +88,7 @@ public class SummoningTable
 		GameRegistry.registerBlock(blockSummoningTableActive, "blockSummoningTableActive");
 		
 		//Items
-		GameRegistry.registerItem(itemSummoningBookCow, "itemSummoningBookCow");
-		GameRegistry.registerItem(itemSummoningBookPig, "itemSummoningBookPig");
-		GameRegistry.registerItem(itemSummoningBookSheep, "itemSummoningBookSheep");
-		GameRegistry.registerItem(itemSummoningBookChicken, "itemSummoningBookChicken");
-		GameRegistry.registerItem(itemSummoningBookMooshroom, "itemSummoningBookMooshroom");
-		GameRegistry.registerItem(itemSummoningBookVillager, "itemSummoningBookVillager");
-		GameRegistry.registerItem(itemSummoningBookSnowGolem, "itemSummoningBookSnwoGolem");
-		GameRegistry.registerItem(itemSummoningBookBat, "itemSummoningBookBat");
-		GameRegistry.registerItem(itemSummoningBookHorse, "itemSummoningBookHorse");
-		GameRegistry.registerItem(itemSummoningBookOcelot, "itemSummoningBookOcelot");
-		GameRegistry.registerItem(itemSummoningBookSquid, "itemSummoningBookSquid");
+		GameRegistry.registerItem(itemSummoningBook, "itemSummoningBook");
 		
 		GameRegistry.registerItem(itemPassiveCraftingOrb, "itemPassiveCraftingOrb");
 		GameRegistry.registerItem(itemNeutralCraftingOrb, "itemNeutralCraftingOrb");
