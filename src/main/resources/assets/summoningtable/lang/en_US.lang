@@ -1,17 +1,6 @@
 itemGroup.tabSummoningTable=SummoningTable
 
-item.itemSummoningBookCow.name=Cow Summoning Book
-item.itemSummoningBookPig.name=Pig Summoning Book
-item.itemSummoningBookSheep.name=Sheep Summoning Book
-item.itemSummoningBookChicken.name=Chicken Summoning Book
-item.itemSummoningBookMooshroom.name=Mooshroom Summoning Book
-item.itemSummoningBookVillager.name=Villager Summoning Book
-item.itemSummoningBookSnowGolem.name=Snow Golem Summoning Book
-item.itemSummoningBookBat.name=Bat Summoning Book
-item.itemSummoningBookHorse.name=Horse Summoning Book
-item.itemSummoningBookOcelot.name=Ocelot Summoning Book
-item.itemSummoningBookSquid.name=Squid Summoning Book
-
+item.itemSummoningBook.name=Summoning Book
 
 item.itemPassiveCraftingOrb.name=Passive Crafting Orb
 item.itemNeutralCraftingOrb.name=Neutral Crafting Orb
@@ -20,3 +9,6 @@ item.itemSummoningCore.name=Summoning Core
 
 tile.blockSummoningTableIdle.name=Summoning Table
 container.summoningTable=Summoning
+
+st.tooltip.spawns=Spawns
+st.tooltip.usesLeft=Uses Left
