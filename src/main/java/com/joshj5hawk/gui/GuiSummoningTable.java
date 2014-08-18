@@ -54,8 +54,8 @@ public class GuiSummoningTable extends GuiContainer
     // mostly copied from bspkrs core, do not touch
     private void renderEntity(ItemStack stack1, ItemStack stack2)
     {
-        float posX = (float) mc.thePlayer.posX;
-        float posY = (float) mc.thePlayer.posY;
+        float posX = 135;
+        float posY = 35;
 
         ItemStack result = SummoningRecipes.INSTANCE.getSummoningResult(stack1.getItem(), stack2.getItem());
         EntityLiving ent = (EntityLiving) EntityList.createEntityByName(ItemSummoningBook.getSimpleEntityName(ItemSummoningBook.getTag(result).getString(ItemSummoningBook.ENTITY_KEY)), mc.theWorld);
@@ -66,18 +66,15 @@ public class GuiSummoningTable extends GuiContainer
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         GL11.glPushMatrix();
         GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-        GL11.glTranslatef(posX - 140, posY - 20, 50.0F);
+        GL11.glTranslatef(posX, posY, 50.0F);
         GL11.glScalef((-25), 25, 25);
         GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
         GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
         GL11.glRotatef(rot, 0, 1, 0);
         RenderHelper.enableStandardItemLighting();
         GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-        ent.renderYawOffset = (float) Math.atan(2.0F / 40.0F) * 20.0F;
-        ent.rotationYaw = (float) Math.atan(2.0F / 40.0F) * 40.0F;
-        ent.rotationPitch = -((float) Math.atan(2.0F / 40.0F)) * 20.0F;
         ent.rotationYawHead = ent.renderYawOffset;
-        GL11.glTranslatef(0.0F, ent.yOffset, 0.0F);
+        GL11.glTranslatef(0.0F, -ent.height / 2, 0.0F);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         RenderManager.instance.playerViewY = 180.0F;
         RenderManager.instance.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);

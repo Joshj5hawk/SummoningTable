@@ -5,11 +5,13 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityList.EntityEggInfo;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,6 +22,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import com.joshj5hawk.crafting.SummoningRecipes;
 import com.joshj5hawk.handler.ConfigurationFile;
 import com.joshj5hawk.lib.Strings;
 import com.joshj5hawk.main.SummoningTable;
@@ -47,10 +50,20 @@ public class ItemSummoningBook extends Item
 	public static final String ENTITY_KEY = "entityKey";
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean held)
     {
         list.add(StatCollector.translateToLocal("st.tooltip.spawns") + ": " + EnumChatFormatting.YELLOW + getSimpleEntityName(getTag(stack).getString(ENTITY_KEY)));
         list.add(StatCollector.translateToLocal("st.tooltip.usesLeft") + ": " + EnumChatFormatting.WHITE +  getTag(stack).getInteger(USES_KEY));
+    }
+    
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs tab, List list)
+    {
+        list.addAll(SummoningRecipes.INSTANCE.getAllResults());
     }
 	
 	@Override
@@ -120,6 +133,8 @@ public class ItemSummoningBook extends Item
 	    if (stack.getTagCompound() == null)
 	    {
 	        stack.stackTagCompound = new NBTTagCompound();
+	        stack.stackTagCompound.setInteger(USES_KEY, ConfigurationFile.maxUses);
+	        stack.stackTagCompound.setString(ENTITY_KEY, EntityPig.class.getName());
 	    }
 	    return stack.stackTagCompound;
 	}
@@ -173,7 +188,7 @@ public class ItemSummoningBook extends Item
 	{
 	    if (pass == 2)
 	    {
-	        return 0xFFFFFF; // don't color the pages
+	        return 0xFFFFFF;
 	    }
 	    else
 	    {

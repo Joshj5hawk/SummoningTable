@@ -62,6 +62,16 @@ public class SummoningRecipes
 	    return null;
 	}
 	
+    public List<ItemStack> getAllResults()
+    {
+        ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
+        for (SummoningRecipe r : recipes)
+        {
+            outputs.add(r.getResult());
+        }
+        return outputs;
+    }
+    
 	/**
 	 * Registers a new recipe using the two items given, resulting in a summoning book that spawns the specified entity
 	 */
