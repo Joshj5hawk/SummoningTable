@@ -1,6 +1,7 @@
 package com.joshj5hawk.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -126,6 +127,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 			Item item = itemstack.getItem();
 
 			if (item == Items.book) return 100;
+			if (item == Item.getItemFromBlock(Blocks.bookshelf)) return 400;
 
 			return 0;
 		}

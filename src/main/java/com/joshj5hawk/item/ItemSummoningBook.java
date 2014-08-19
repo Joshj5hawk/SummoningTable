@@ -48,14 +48,31 @@ public class ItemSummoningBook extends Item
 	// NBT keys
 	public static final String USES_KEY = "usesLeft";
 	public static final String ENTITY_KEY = "entityKey";
+
+	
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean held)
     {
+    	EnumChatFormatting usesColor = EnumChatFormatting.WHITE;
+    	
+    	if(getTag(stack).getInteger(USES_KEY) >= 41)
+    		{
+    			usesColor = EnumChatFormatting.GREEN;
+    		}
+    	else if(getTag(stack).getInteger(USES_KEY) >= 16) 
+    		{
+    			usesColor = EnumChatFormatting.YELLOW;
+    		}
+    	else 
+    		{
+    			usesColor = EnumChatFormatting.RED;
+    		}
+    	
         list.add(StatCollector.translateToLocal("st.tooltip.spawns") + ": " + EnumChatFormatting.YELLOW + getSimpleEntityName(getTag(stack).getString(ENTITY_KEY)));
-        list.add(StatCollector.translateToLocal("st.tooltip.usesLeft") + ": " + EnumChatFormatting.WHITE +  getTag(stack).getInteger(USES_KEY));
+        list.add(StatCollector.translateToLocal("st.tooltip.usesLeft") + ": " + usesColor +  getTag(stack).getInteger(USES_KEY));
     }
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -65,7 +82,6 @@ public class ItemSummoningBook extends Item
     {
         list.addAll(SummoningRecipes.INSTANCE.getAllResults());
     }
-	
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int i, float f1, float f2, float f3)
 	{

@@ -8,10 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntitySnowman;
+import net.minecraft.entity.monster.EntitySilverfish;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
@@ -130,12 +139,26 @@ public class SummoningRecipes
         registerRecipe(mat, new ItemStack(Items.apple), EntityBat.class);
         registerRecipe(mat, new ItemStack(Items.saddle), EntityHorse.class);
         registerRecipe(mat, new ItemStack(Items.fish), EntityOcelot.class);
-        registerRecipe(mat, new ItemStack(Items.dye, 1, 15), EntitySquid.class);
+        registerRecipe(mat, new ItemStack(Items.dye, 1, 0), EntitySquid.class);
+        
         //Passive Mobs
         registerRecipe(mat, new ItemStack(Items.ender_pearl), EntityEnderman.class);
         registerRecipe(mat, new ItemStack(Items.gold_nugget), EntityPigZombie.class);
         //registerRecipe(mat, Item.getItemFromBlock(Blocks.iron_block), EntityIronGolem.class);
         registerRecipe(mat, new ItemStack(Items.cooked_beef), EntityWolf.class);
+        
+        //HostileMobs
+        registerRecipe(mat, new ItemStack(Items.gunpowder), EntityCreeper.class);
+        registerRecipe(mat, new ItemStack(Items.rotten_flesh), EntityZombie.class);
+        registerRecipe(mat, new ItemStack(Items.string), EntitySpider.class);
+        registerRecipe(mat, new ItemStack(Items.fermented_spider_eye), EntityCaveSpider.class);
+        registerRecipe(mat, new ItemStack(Items.bone), EntitySkeleton.class);
+        registerRecipe(mat, new ItemStack(Item.getItemFromBlock(Blocks.stonebrick), 1, 2), EntitySilverfish.class);
+        registerRecipe(mat, new ItemStack(Items.slime_ball), EntitySlime.class);
+        registerRecipe(mat, new ItemStack(Items.magma_cream), EntityMagmaCube.class);
+        registerRecipe(mat, new ItemStack(Items.blaze_rod), EntityBlaze.class);
+        registerRecipe(mat, new ItemStack(Items.ghast_tear), EntityGhast.class);
+        registerRecipe(mat, new ItemStack(Items.nether_wart), EntityWitch.class);
 
         // Here's the rest of the recipes, not converted to the new form yet.
         // Items.diamond should be replaced with mat

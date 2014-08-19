@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
@@ -16,6 +17,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.joshj5hawk.container.ContainerSummoningTable;
 import com.joshj5hawk.crafting.SummoningRecipes;
@@ -85,6 +87,7 @@ public class GuiSummoningTable extends GuiContainer
         ItemStack result = SummoningRecipes.INSTANCE.getSummoningResult(stack1, stack2);
         EntityLiving ent = (EntityLiving) EntityList.createEntityByName(ItemSummoningBook.getSimpleEntityName(ItemSummoningBook.getTag(result).getString(ItemSummoningBook.ENTITY_KEY)), mc.theWorld);
 
+        GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glDepthMask(true);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
@@ -104,6 +107,12 @@ public class GuiSummoningTable extends GuiContainer
         RenderManager.instance.playerViewY = 180.0F;
         RenderManager.instance.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
         GL11.glPopMatrix();
+        RenderHelper.disableStandardItemLighting();
+        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        OpenGlHelper.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);
+        GL11.glTranslatef(0.0F, 0.0F, 20F);
         GL11.glPopAttrib();
         rot += 0.5f;
     }
