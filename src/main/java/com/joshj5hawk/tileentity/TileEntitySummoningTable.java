@@ -19,8 +19,8 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 
 	public int dualFuel;
 	public int dualCookTime;
-	public static final int maxFuel = 500;
-	public static final int summoningSpeed = 50;
+	public static final int maxFuel = 2000;
+	public static final int summoningSpeed = 100;
 
 	private static final int[] slots_top = new int[] {0, 1};
 	private static final int[] slots_bottom = new int[] {3};
@@ -107,7 +107,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) 
 	{
-		return i == 2 ? false : (i == 1 ? hasItemFuel(itemstack) : true);
+		return i == 3 ? false : (i == 2 ? hasItemFuel(itemstack) : true);
 	}
 
 	public boolean hasItemFuel(ItemStack itemstack) 
@@ -125,7 +125,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 		{
 			Item item = itemstack.getItem();
 
-			if (item == Items.book) return 50;
+			if (item == Items.book) return 100;
 
 			return 0;
 		}
@@ -240,7 +240,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 			return false;
 		}
 
-		ItemStack itemstack = SummoningRecipes.INSTANCE.getSummoningResult(slots[0].getItem(), slots[1].getItem());
+		ItemStack itemstack = SummoningRecipes.INSTANCE.getSummoningResult(slots[0], slots[1]);
 
 		if (itemstack == null) 
 		{
@@ -271,7 +271,8 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 	{
 		if (canSummon()) 
 		{
-			ItemStack itemstack = SummoningRecipes.INSTANCE.getSummoningResult(slots[0].getItem(), slots[1].getItem());
+			dualFuel--;
+			ItemStack itemstack = SummoningRecipes.INSTANCE.getSummoningResult(slots[0], slots[1]);
 
 			if (slots[3] == null) 
 			{

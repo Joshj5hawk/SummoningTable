@@ -1,14 +1,28 @@
 package com.joshj5hawk.crafting;
 
-import static com.joshj5hawk.item.ItemSummoningBook.*;
+import static com.joshj5hawk.item.ItemSummoningBook.ENTITY_KEY;
+import static com.joshj5hawk.item.ItemSummoningBook.USES_KEY;
+import static com.joshj5hawk.item.ItemSummoningBook.getTag;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.monster.EntitySnowman;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -22,10 +36,10 @@ public class SummoningRecipes
 {
     private static class SummoningRecipe
     {
-        private Item item1, item2;
+        private ItemStack item1, item2;
         private ItemStack result;
         
-        private SummoningRecipe(Item item1, Item item2, Class<? extends Entity> entityClass)
+        private SummoningRecipe(ItemStack item1, ItemStack item2, Class<? extends Entity> entityClass)
         {
             this.item1 = item1;
             this.item2 = item2;
@@ -50,7 +64,7 @@ public class SummoningRecipes
 		recipes = new ArrayList<SummoningRecipe>();
 	}
 	
-	public ItemStack getSummoningResult(Item item, Item item2)
+	public ItemStack getSummoningResult(ItemStack item, ItemStack item2)
 	{
 	    for (SummoningRecipe recipe : recipes)
 	    {
@@ -75,7 +89,7 @@ public class SummoningRecipes
 	/**
 	 * Registers a new recipe using the two items given, resulting in a summoning book that spawns the specified entity
 	 */
-	public void registerRecipe(Item item1, Item item2, Class<? extends Entity> entityClass)
+	public void registerRecipe(ItemStack item1, ItemStack item2, Class<? extends Entity> entityClass)
 	{
 	    recipes.add(new SummoningRecipe(item1, item2, entityClass));
 	}
@@ -83,31 +97,45 @@ public class SummoningRecipes
 	/**
 	 * Makes sure that the recipe matches regardless of the order of the items
 	 */
-	private boolean matchesEitherWay(SummoningRecipe recipe, Item item1, Item item2)
+	private boolean matchesEitherWay(SummoningRecipe recipe, ItemStack item1, ItemStack item2)
     {
-	    return (recipe.item1 == item1 && recipe.item2 == item2) || (recipe.item2 == item1 && recipe.item1 == item2); 
+	    return (recipe.item1.isItemEqual(item1) && recipe.item2.isItemEqual(item2)) || (recipe.item2.isItemEqual(item1) && recipe.item1.isItemEqual(item2)); 
     }
 
     //RECIPES HERE
 	public void registerBaseRecipes()
 	{	    
-	    Item mat = null;
+	    ItemStack mat = null;
 		if(ConfigurationFile.easyMode == true)
 		{
-		    mat = Items.diamond;
+		    mat = new ItemStack(Items.diamond);
 		}
 		else
 		{
-		    mat = SummoningTable.itemSummoningCore;
+		    mat = new ItemStack(SummoningTable.itemSummoningCore);
 		}
 		
         ItemStack out = new ItemStack(SummoningTable.itemSummoningBook);
         out.stackTagCompound = new NBTTagCompound();
         out.stackTagCompound.setInteger(USES_KEY, 64);
 
-        registerRecipe(mat, Items.leather, EntityCow.class);
-        registerRecipe(mat, Items.porkchop, EntityPig.class);
-        registerRecipe(mat, Item.getItemFromBlock(Blocks.wool), EntitySheep.class);
+        //Passive Mobs
+        registerRecipe(mat, new ItemStack(Items.leather), EntityCow.class);
+        registerRecipe(mat, new ItemStack(Items.porkchop), EntityPig.class);
+        registerRecipe(mat, new ItemStack(Item.getItemFromBlock(Blocks.wool)), EntitySheep.class);
+        registerRecipe(mat, new ItemStack(Items.chicken), EntityChicken.class);
+        registerRecipe(mat, new ItemStack(Items.mushroom_stew), EntityMooshroom.class);
+        registerRecipe(mat, new ItemStack(Items.emerald), EntityVillager.class);
+        //registerRecipe(mat, Items.snowball, EntitySnowman.class);
+        registerRecipe(mat, new ItemStack(Items.apple), EntityBat.class);
+        registerRecipe(mat, new ItemStack(Items.saddle), EntityHorse.class);
+        registerRecipe(mat, new ItemStack(Items.fish), EntityOcelot.class);
+        registerRecipe(mat, new ItemStack(Items.dye, 1, 15), EntitySquid.class);
+        //Passive Mobs
+        registerRecipe(mat, new ItemStack(Items.ender_pearl), EntityEnderman.class);
+        registerRecipe(mat, new ItemStack(Items.gold_nugget), EntityPigZombie.class);
+        //registerRecipe(mat, Item.getItemFromBlock(Blocks.iron_block), EntityIronGolem.class);
+        registerRecipe(mat, new ItemStack(Items.cooked_beef), EntityWolf.class);
 
         // Here's the rest of the recipes, not converted to the new form yet.
         // Items.diamond should be replaced with mat

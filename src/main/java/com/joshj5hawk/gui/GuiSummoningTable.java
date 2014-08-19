@@ -1,5 +1,8 @@
 package com.joshj5hawk.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
@@ -9,6 +12,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -35,8 +39,9 @@ public class GuiSummoningTable extends GuiContainer
         this.ySize = 166;
     }
 
-    public void drawGuiContainerForegroundLayer(int par1, int par2)
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
+    	EnumChatFormatting color = EnumChatFormatting.GREEN;
         String name = this.summoningTable.hasCustomInventoryName() ? this.summoningTable.getInventoryName() : I18n.format(this.summoningTable.getInventoryName(),
                 new Object[0]);
         this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) - 70 / 2, 6, 4210752);
@@ -49,6 +54,26 @@ public class GuiSummoningTable extends GuiContainer
         {
             renderEntity(stack1, stack2);
         }
+        if(summoningTable.dualFuel / 100 >= 16)
+        {
+        	color = EnumChatFormatting.GREEN;
+        }
+        else if(summoningTable.dualFuel / 100 >=6)
+        {
+        	color = EnumChatFormatting.YELLOW;
+        }
+        else
+        {
+        	color = EnumChatFormatting.RED;
+        }
+        int w = (this.width - this.xSize) / 2;
+        int h = (this.height - this.ySize) / 2;
+        List<String> ttLines = new ArrayList<String>();
+        if (summoningTable != null && mouseX < w + 66 && mouseX > w + 52 && mouseY > h + 6 && mouseY < h + 38)
+        {
+            ttLines.add(color + "" + summoningTable.dualFuel / 100 + EnumChatFormatting.WHITE + " Summons Remain");
+            this.func_146283_a(ttLines, mouseX - w, mouseY - h);
+        }
     }
 
     // mostly copied from bspkrs core, do not touch
@@ -57,7 +82,7 @@ public class GuiSummoningTable extends GuiContainer
         float posX = 135;
         float posY = 35;
 
-        ItemStack result = SummoningRecipes.INSTANCE.getSummoningResult(stack1.getItem(), stack2.getItem());
+        ItemStack result = SummoningRecipes.INSTANCE.getSummoningResult(stack1, stack2);
         EntityLiving ent = (EntityLiving) EntityList.createEntityByName(ItemSummoningBook.getSimpleEntityName(ItemSummoningBook.getTag(result).getString(ItemSummoningBook.ENTITY_KEY)), mc.theWorld);
 
         GL11.glDisable(GL11.GL_BLEND);
@@ -79,6 +104,7 @@ public class GuiSummoningTable extends GuiContainer
         RenderManager.instance.playerViewY = 180.0F;
         RenderManager.instance.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
         GL11.glPopMatrix();
+        GL11.glPopAttrib();
         rot += 0.5f;
     }
 
@@ -91,7 +117,7 @@ public class GuiSummoningTable extends GuiContainer
 
         if (summoningTable.hasFuel())
         {
-            int i1 = summoningTable.getFuelRemainingScaled(34);
+            int i1 = summoningTable.getFuelRemainingScaled(30);
             drawTexturedModalRect(guiLeft + 54, guiTop + 37 - i1, 227, 31 - i1, 12, i1);
         }
 
