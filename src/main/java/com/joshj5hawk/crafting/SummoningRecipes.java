@@ -79,7 +79,7 @@ public class SummoningRecipes
 	    {
 	        if (matchesEitherWay(recipe, item, item2))
 	        {
-	            return recipe.getResult();
+	        	return recipe.getResult();
 	        }
 	    }
 	    return null;

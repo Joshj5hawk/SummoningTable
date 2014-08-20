@@ -12,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 
 import com.joshj5hawk.block.BlockSummoningTable;
 import com.joshj5hawk.crafting.SummoningRecipes;
+import com.joshj5hawk.main.SummoningTable;
 
 public class TileEntitySummoningTable extends TileEntity implements ISidedInventory 
 {
@@ -128,6 +129,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 
 			if (item == Items.book) return 100;
 			if (item == Item.getItemFromBlock(Blocks.bookshelf)) return 400;
+			if (item == SummoningTable.itemStackOfBooks) return 1200;
 
 			return 0;
 		}

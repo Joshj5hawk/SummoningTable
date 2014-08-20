@@ -83,38 +83,40 @@ public class GuiSummoningTable extends GuiContainer
     {
         float posX = 135;
         float posY = 35;
-
+        
         ItemStack result = SummoningRecipes.INSTANCE.getSummoningResult(stack1, stack2);
-        EntityLiving ent = (EntityLiving) EntityList.createEntityByName(ItemSummoningBook.getSimpleEntityName(ItemSummoningBook.getTag(result).getString(ItemSummoningBook.ENTITY_KEY)), mc.theWorld);
-
-        GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
-        GL11.glDisable(GL11.GL_BLEND);
-        GL11.glDepthMask(true);
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glEnable(GL11.GL_ALPHA_TEST);
-        GL11.glPushMatrix();
-        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-        GL11.glTranslatef(posX, posY, 50.0F);
-        GL11.glScalef((-25), 25, 25);
-        GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
-        GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glRotatef(rot, 0, 1, 0);
-        RenderHelper.enableStandardItemLighting();
-        GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-        ent.rotationYawHead = ent.renderYawOffset;
-        GL11.glTranslatef(0.0F, -ent.height / 2, 0.0F);
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderManager.instance.playerViewY = 180.0F;
-        RenderManager.instance.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
-        GL11.glPopMatrix();
-        RenderHelper.disableStandardItemLighting();
-        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-        OpenGlHelper.setActiveTexture(OpenGlHelper.lightmapTexUnit);
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
-        OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);
-        GL11.glTranslatef(0.0F, 0.0F, 20F);
-        GL11.glPopAttrib();
-        rot += 0.5f;
+        if(result != null)
+        {
+        	EntityLiving ent = (EntityLiving) EntityList.createEntityByName(ItemSummoningBook.getSimpleEntityName(ItemSummoningBook.getTag(result).getString(ItemSummoningBook.ENTITY_KEY)), mc.theWorld);
+        	GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
+        	GL11.glDisable(GL11.GL_BLEND);
+        	GL11.glDepthMask(true);
+        	GL11.glEnable(GL11.GL_DEPTH_TEST);
+        	GL11.glEnable(GL11.GL_ALPHA_TEST);
+        	GL11.glPushMatrix();
+        	GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+        	GL11.glTranslatef(posX, posY, 50.0F);
+        	GL11.glScalef((-25), 25, 25);
+        	GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
+        	GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
+        	GL11.glRotatef(rot, 0, 1, 0);
+        	RenderHelper.enableStandardItemLighting();
+        	GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
+        	ent.rotationYawHead = ent.renderYawOffset;
+        	GL11.glTranslatef(0.0F, -ent.height / 2, 0.0F);
+        	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        	RenderManager.instance.playerViewY = 180.0F;
+        	RenderManager.instance.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+        	GL11.glPopMatrix();
+        	RenderHelper.disableStandardItemLighting();
+        	GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+        	OpenGlHelper.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        	GL11.glDisable(GL11.GL_TEXTURE_2D);
+        	OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);
+        	GL11.glTranslatef(0.0F, 0.0F, 20F);
+        	GL11.glPopAttrib();
+        	rot += 0.5f;
+        }
     }
 
     @Override

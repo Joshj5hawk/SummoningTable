@@ -41,7 +41,7 @@ public class SummoningTable
 	public static Item itemNeutralCraftingOrb;
 	public static Item itemHostileCraftingOrb;
 	public static Item itemSummoningCore;
-	
+	public static Item itemStackOfBooks;
 	public static final int guiIDSummoningTable = 0;
 	
 	//Tabs
@@ -82,6 +82,8 @@ public class SummoningTable
 		itemHostileCraftingOrb = new Item().setUnlocalizedName("itemHostileCraftingOrb").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconHostileOrb16" : Strings.modid + ":iconHostileOrb64").setMaxStackSize(1);
 		itemSummoningCore = new Item().setUnlocalizedName("itemSummoningCore").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconSummoningCore16" : Strings.modid + ":iconSummoningCore64");
 		
+		//Other
+		itemStackOfBooks = new Item().setUnlocalizedName("itemStackOfBooks").setCreativeTab(tabSummoningTable).setTextureName(ConfigurationFile.lowRes ? Strings.modid + ":iconStackOfBooks" + suffix : Strings.modid + ":iconStackOfBooks" + suffix);
 		//Register
 		//blocks
 		GameRegistry.registerBlock(blockSummoningTableIdle, "blockSummoningTableIdle");
@@ -89,6 +91,7 @@ public class SummoningTable
 		
 		//Items
 		GameRegistry.registerItem(itemSummoningBook, "itemSummoningBook");
+		GameRegistry.registerItem(itemStackOfBooks, "itemStackOfBooks");
 		
 		GameRegistry.registerItem(itemPassiveCraftingOrb, "itemPassiveCraftingOrb");
 		GameRegistry.registerItem(itemNeutralCraftingOrb, "itemNeutralCraftingOrb");
