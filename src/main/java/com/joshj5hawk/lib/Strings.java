@@ -4,4 +4,5 @@ public class Strings
 {
 	public static final String modid = "summoningtable";
 	public static final String version = "0.6";
+	public static final String name = "Josh's Summoning Table";
 }

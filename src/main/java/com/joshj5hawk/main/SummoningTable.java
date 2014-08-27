@@ -10,6 +10,7 @@ import com.joshj5hawk.handler.STFuelHandler;
 import com.joshj5hawk.handler.STGUIHandler;
 import com.joshj5hawk.item.ItemSummoningBook;
 import com.joshj5hawk.lib.Strings;
+import com.joshj5hawk.proxies.CommonProxy;
 import com.joshj5hawk.recipies.STCraftingRecipies;
 import com.joshj5hawk.recipies.STSmeltingRecipies;
 import com.joshj5hawk.tileentity.TileEntitySummoningTable;
@@ -18,6 +19,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -26,7 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = Strings.modid, version = Strings.version)
+@Mod(modid = Strings.modid, name = Strings.name, version = Strings.version)
 public class SummoningTable 
 {
 	//Blocks
@@ -49,6 +51,9 @@ public class SummoningTable
 	
 	@Instance(Strings.modid)
 	public static SummoningTable instance;
+	
+	@SidedProxy(clientSide = "com.joshj5hawk.proxies.ClientProxy", serverSide = "com.joshj5hawk.CommonProxy")
+	public static CommonProxy proxy;
 	
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent preEvent)
@@ -116,7 +121,7 @@ public class SummoningTable
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent postEvent)
 	{
-		
+		System.out.println(Strings.name + " version " + Strings.version + " loaded");
 	}
 	
 }
