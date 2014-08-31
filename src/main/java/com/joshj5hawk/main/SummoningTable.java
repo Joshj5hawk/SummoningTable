@@ -61,6 +61,10 @@ public class SummoningTable
 		//Config
 		ConfigurationFile.init(preEvent.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationFile());
+		
+		//Renders
+		proxy.initRenderers();
+		
 		//CreativeTab
 		tabSummoningTable = new CreativeTabs("tabSummoningTable")
 		{
@@ -73,8 +77,8 @@ public class SummoningTable
 		
 		//Init
 		//Blocks
-		blockSummoningTableIdle = new BlockSummoningTable(false).setBlockName("blockSummoningTableIdle").setCreativeTab(tabSummoningTable).setHardness(3.5F);
-		blockSummoningTableActive = new BlockSummoningTable(true).setBlockName("blockSummoningTableActive").setHardness(3.5F);
+		blockSummoningTableIdle = new BlockSummoningTable(false).setBlockName("blockSummoningTableIdle").setCreativeTab(tabSummoningTable).setHardness(3.5F).setBlockTextureName("");
+		blockSummoningTableActive = new BlockSummoningTable(true).setBlockName("blockSummoningTableActive").setHardness(3.5F).setBlockTextureName("");
 		
 		//Items
 		//Summoning Books

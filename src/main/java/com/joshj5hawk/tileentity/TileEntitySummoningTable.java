@@ -21,12 +21,12 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 
 	public int dualFuel;
 	public int dualCookTime;
-	public static final int maxFuel = 2000;
-	public static final int summoningSpeed = 100;
+	public static final int maxFuel = 4000;
+	public static final int summoningSpeed = 200;
 
-	private static final int[] slots_top = new int[] {0, 1};
+	private static final int[] slots_side = new int[] {0, 1};
 	private static final int[] slots_bottom = new int[] {3};
-	private static final int[] slots_side = new int[] {2};
+	private static final int[] slots_top = new int[] {2};
 
 	private String customName;
 
@@ -127,9 +127,9 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 		{
 			Item item = itemstack.getItem();
 
-			if (item == Items.book) return 100;
-			if (item == Item.getItemFromBlock(Blocks.bookshelf)) return 400;
-			if (item == SummoningTable.itemStackOfBooks) return 1200;
+			if (item == Items.book) return 200;
+			if (item == Item.getItemFromBlock(Blocks.bookshelf)) return 800;
+			if (item == SummoningTable.itemStackOfBooks) return 2400;
 
 			return 0;
 		}

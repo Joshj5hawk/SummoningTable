@@ -42,7 +42,22 @@ public class BlockSummoningTable extends BlockContainer
 		isActive = blockState;
 	}
 
-	@SideOnly(Side.CLIENT)
+	public int getRenderType()
+	{
+		return -1;
+	}
+	
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+	
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+	
+	/*@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon(Strings.modid + ":iconTableSide");
@@ -54,7 +69,7 @@ public class BlockSummoningTable extends BlockContainer
 	{
 		return side == 1 ? this.iconTop : (side == 0 ? Blocks.planks.getBlockTextureFromSide(side) : this.blockIcon);
 		//return meta == 0 && side == 3 ? this.iconTop : (side == meta ? this.iconTop : this.blockIcon);
-	}
+	}*/
 	
 	public void onBlockAdded(World world, int x, int y, int z)
 	{

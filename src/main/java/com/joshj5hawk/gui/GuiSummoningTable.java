@@ -73,7 +73,7 @@ public class GuiSummoningTable extends GuiContainer
         List<String> ttLines = new ArrayList<String>();
         if (summoningTable != null && mouseX < w + 66 && mouseX > w + 52 && mouseY > h + 6 && mouseY < h + 38)
         {
-            ttLines.add(color + "" + summoningTable.dualFuel / 100 + EnumChatFormatting.WHITE + " Summons Remain");
+            ttLines.add(color + "" + summoningTable.dualFuel / 200 + EnumChatFormatting.WHITE + " Summons Remain");
             this.func_146283_a(ttLines, mouseX - w, mouseY - h);
         }
     }
