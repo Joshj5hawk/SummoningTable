@@ -112,7 +112,7 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 		return i == 3 ? false : (i == 2 ? hasItemFuel(itemstack) : true);
 	}
 
-	public boolean hasItemFuel(ItemStack itemstack) 
+	public static boolean hasItemFuel(ItemStack itemstack) 
 	{
 		return getItemFuel(itemstack) > 0;
 	}

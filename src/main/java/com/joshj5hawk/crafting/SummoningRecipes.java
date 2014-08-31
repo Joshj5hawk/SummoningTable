@@ -64,7 +64,7 @@ public class SummoningRecipes
         }
     }
     
-    private List<SummoningRecipe> recipes;
+    private static List<SummoningRecipe> recipes;
     
     public static final SummoningRecipes INSTANCE = new SummoningRecipes();
     
@@ -85,7 +85,7 @@ public class SummoningRecipes
 	    return null;
 	}
 	
-    public List<ItemStack> getAllResults()
+    public static List<ItemStack> getAllResults()
     {
         ArrayList<ItemStack> outputs = new ArrayList<ItemStack>();
         for (SummoningRecipe r : recipes)
@@ -159,30 +159,5 @@ public class SummoningRecipes
         registerRecipe(mat, new ItemStack(Items.blaze_rod), EntityBlaze.class);
         registerRecipe(mat, new ItemStack(Items.ghast_tear), EntityGhast.class);
         registerRecipe(mat, new ItemStack(Items.nether_wart), EntityWitch.class);
-
-        // Here's the rest of the recipes, not converted to the new form yet.
-        // Items.diamond should be replaced with mat
-        // itemSummoningBook[EntityName] should be replaced with [EntityName].class
-        
-//			if(item == Items.diamond && item2 == Items.chicken || item == Items.chicken && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookChicken);
-//			if(item == Items.diamond && item2 == Items.mushroom_stew || item == Items.mushroom_stew && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookMooshroom);
-//			if(item == Items.diamond && item2 == Items.emerald || item == Items.emerald && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookVillager);
-//			if(item == Items.diamond && item2 == Items.snowball || item == Items.snowball && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookSnowGolem);
-//			if(item == Items.diamond && item2 == Items.apple || item == Items.apple && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookBat);
-//			if(item == Items.diamond && item2 == Items.saddle || item == Items.saddle && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookHorse);
-//			if(item == Items.diamond && item2 == Items.fish || item == Items.fish && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookOcelot);
-//			if(item == Items.diamond && item2 == Items.dye || item == Items.emerald && item2 == Items.diamond)
-//				return new ItemStack(SummoningTable.itemSummoningBookSquid);
-//			
-//			
-//			return null;
-//		}
 	}
 }

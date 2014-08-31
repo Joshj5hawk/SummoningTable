@@ -2,12 +2,15 @@ package com.joshj5hawk.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
+
+import com.joshj5hawk.crafting.SummoningRecipes;
 import com.joshj5hawk.slot.SlotSummoningTable;
 import com.joshj5hawk.tileentity.TileEntitySummoningTable;;
 
@@ -50,77 +53,88 @@ public class ContainerSummoningTable extends Container {
 		crafting.sendProgressBarUpdate(this, 1, this.summoning.dualFuel);
 	}
 
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
-    {
-        ItemStack itemstack = null;
-        Slot slot = (Slot)this.inventorySlots.get(par2);
+	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int theSlot)
+	{
+		ItemStack itemstack = null;
+		Slot slot = (Slot)this.inventorySlots.get(theSlot);
 
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
+		if (slot != null && slot.getHasStack())
+		{
+				ItemStack itemstack1 = slot.getStack();
+				itemstack = itemstack1.copy();
 
-            if (par2 == 2)
-            {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true))
-                {
-                    return null;
-                }
+				// If itemstack is in Output stack
+				if (theSlot == 3)
+				{
+					// try to place in player inventory / action bar; add 36+1 because mergeItemStack uses < index,
+					// so the last slot in the inventory won't get checked if you don't add 1
+					if (!this.mergeItemStack(itemstack1, 3 + 1, 3 + 36 + 1, true))
+					{
+						return null;
+					}
 
-                slot.onSlotChange(itemstack1, itemstack);
-            }
-            else if (par2 != 1 && par2 != 0)
-            {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
-                {
-                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (TileEntityFurnace.isItemFuel(itemstack1))
-                {
-                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (par2 >= 3 && par2 < 30)
-                {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
-                {
-                    return null;
-                }
-            }
-            else if (!this.mergeItemStack(itemstack1, 3, 39, false))
-            {
-                return null;
-            }
+					slot.onSlotChange(itemstack1, itemstack);
+				}
+				// itemstack is in player inventory, try to place in appropriate furnace slot
+				else if (theSlot != 2 && theSlot != 0 && theSlot != 1)
+				{
+					// if it can be smelted, place in the input slots
+					if (SummoningRecipes.getAllResults() != null)
+					{
+						// try to place in either Input slot; add 1 to final input slot because mergeItemStack uses < index
+						if (!this.mergeItemStack(itemstack1, 0, 1 + 1, false))
+						{
+							return null;
+						}
+					}
+					// if it's an energy source, place in Fuel slot
+					else if (TileEntitySummoningTable.hasItemFuel(itemstack1))
+					{
+						if (this.mergeItemStack(new ItemStack(Items.book), 2, 2 + 1, true))
+						{
+							return null;
+						}
+					}
+					//item in player's inventory, but not in action bar
+					else if (theSlot >= 3 + 1 && theSlot < 3 + 28)
+					{
+						// place in action bar
+						if (!this.mergeItemStack(itemstack1, 3 + 28, 3 + 37, false))
+						{
+							return null;
+						}
+					}
+					// item in action bar - place in player inventory
+					else if (theSlot >= 3 + 28 && theSlot < 3 + 37 && !this.mergeItemStack(itemstack1, 3 + 1, 3 + 28, false))
+					{
+						return null;
+					}
+				}
+				// In one of the infuser slots; try to place in player inventory / action bar
+				else if (!this.mergeItemStack(itemstack1, 3 + 1, 3 + 37, false))
+				{
+					return null;
+				}
 
-            if (itemstack1.stackSize == 0)
-            {
-                slot.putStack((ItemStack)null);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
+				if (itemstack1.stackSize == 0)
+				{
+					slot.putStack((ItemStack)null);
+				}
+				else
+				{
+					slot.onSlotChanged();
+				}
 
-            if (itemstack1.stackSize == itemstack.stackSize)
-            {
-                return null;
-            }
+				if (itemstack1.stackSize == itemstack.stackSize)
+				{
+					return null;
+				}
 
-            slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
-        }
+				slot.onPickupFromSlot(entityPlayer, itemstack1);
+		}
+		return itemstack;
+	}
 
-        return itemstack;
-    }	
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
