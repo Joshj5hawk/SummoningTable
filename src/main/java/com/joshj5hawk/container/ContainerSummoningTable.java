@@ -2,7 +2,6 @@ package com.joshj5hawk.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
@@ -90,7 +89,7 @@ public class ContainerSummoningTable extends Container {
 					// if it's an energy source, place in Fuel slot
 					else if (TileEntitySummoningTable.hasItemFuel(itemstack1))
 					{
-						if (this.mergeItemStack(new ItemStack(Items.book), 2, 2 + 1, true))
+						if (!this.mergeItemStack(itemstack1, 2, 2 + 1, false))
 						{
 							return null;
 						}
