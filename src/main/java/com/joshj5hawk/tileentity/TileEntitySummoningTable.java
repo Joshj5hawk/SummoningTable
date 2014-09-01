@@ -109,6 +109,15 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) 
 	{
+		if(i == 0)
+		{
+			return SummoningRecipes.usedCrafting(itemstack);
+		}
+		else if(i == 1)
+		{
+			return SummoningRecipes.usedCrafting(itemstack);
+		}
+		
 		return i == 3 ? false : (i == 2 ? hasItemFuel(itemstack) : true);
 	}
 
