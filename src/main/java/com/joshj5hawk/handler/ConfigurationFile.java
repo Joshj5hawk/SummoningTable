@@ -16,6 +16,7 @@ public class ConfigurationFile
 	public static boolean debugMode = false;
 	public static boolean lowRes = false;
     public static int maxUses;
+	public static float summoningRotationSpeed;
 	
 	public static void init(File configFile)
 	{
@@ -33,6 +34,7 @@ public class ConfigurationFile
 		debugMode = config.getBoolean("debugMode", Configuration.CATEGORY_GENERAL, false, "Print Certain info to console");
 		lowRes = config.getBoolean("lowRes", Configuration.CATEGORY_GENERAL, false, "Low res, 16x16 textures");
 		maxUses = config.getInt("maxUses", Configuration.CATEGORY_GENERAL, 64, 1, Integer.MAX_VALUE, "The amount of uses that a summoning book will have");
+		summoningRotationSpeed = config.getFloat("summoningRotationSpeed", Configuration.CATEGORY_GENERAL, 3.0F, 0.0F, 100.0F, "How fast should the circle on the SummoningTable spin?");
 		
 		if(config.hasChanged())
 		{

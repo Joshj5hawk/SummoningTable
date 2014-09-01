@@ -133,7 +133,8 @@ public class SummoningRecipes
         registerRecipe(mat, new ItemStack(Items.porkchop), EntityPig.class);
         registerRecipe(mat, new ItemStack(Item.getItemFromBlock(Blocks.wool)), EntitySheep.class);
         registerRecipe(mat, new ItemStack(Items.chicken), EntityChicken.class);
-        registerRecipe(mat, new ItemStack(Items.mushroom_stew), EntityMooshroom.class);
+        registerRecipe(mat, new ItemStack(Item.getItemFromBlock(Blocks.red_mushroom)), EntityMooshroom.class);
+        registerRecipe(mat, new ItemStack(Item.getItemFromBlock(Blocks.brown_mushroom)), EntityMooshroom.class);
         registerRecipe(mat, new ItemStack(Items.emerald), EntityVillager.class);
         //registerRecipe(mat, Items.snowball, EntitySnowman.class);
         registerRecipe(mat, new ItemStack(Items.apple), EntityBat.class);
