@@ -89,7 +89,7 @@ public class ModelSummoningTable extends ModelBase
 	  pilonTwo.render(f);
 	  pilonThree.render(f);
 	  pilonFour.render(f);
-	  summoningTableTop.render(f);
+	  /*summoningTableTop.render(f);*/
   }
   
 
