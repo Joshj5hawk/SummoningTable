@@ -111,11 +111,11 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 	{
 		if(i == 0)
 		{
-			return SummoningRecipes.usedCrafting(itemstack);
+			return SummoningRecipes.usedInCrafting(itemstack);
 		}
 		else if(i == 1)
 		{
-			return SummoningRecipes.usedCrafting(itemstack);
+			return SummoningRecipes.usedInCrafting(itemstack);
 		}
 		
 		return i == 3 ? false : (i == 2 ? hasItemFuel(itemstack) : true);

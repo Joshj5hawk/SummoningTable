@@ -1,9 +1,15 @@
 package com.joshj5hawk.renderer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -11,6 +17,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.joshj5hawk.handler.ConfigurationFile;
 import com.joshj5hawk.lib.Strings;
+import com.joshj5hawk.main.SummoningTable;
 import com.joshj5hawk.model.ModelSummoningTable;
 
 public class RenderSummoningTable extends TileEntitySpecialRenderer

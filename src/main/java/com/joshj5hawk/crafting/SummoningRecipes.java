@@ -162,52 +162,15 @@ public class SummoningRecipes
         registerRecipe(mat, new ItemStack(Items.nether_wart), EntityWitch.class);
 	}
 	
-	public static int isUsedInCrafting(ItemStack itemstack)
+	public static boolean usedInCrafting(ItemStack itemstack)
 	{
-		if(itemstack == null)
+		for(SummoningRecipe r : recipes)
 		{
-			return 0;
+			if(ItemStack.areItemStacksEqual(itemstack, r.item1) || ItemStack.areItemStacksEqual(itemstack, r.item2))
+			{
+				return true;
+			}
 		}
-		else
-		{
-			Item item = itemstack.getItem();
-			
-			if(item == Items.leather) return 1;
-			if(item == Items.porkchop) return 1;
-			if(item == Item.getItemFromBlock(Blocks.wool)) return 1;	
-			if(item == Items.chicken) return 1;
-			if(item == Item.getItemFromBlock(Blocks.red_mushroom)) return 1;
-			if(item == Item.getItemFromBlock(Blocks.brown_mushroom)) return 1;
-			if(item == Items.emerald) return 1;
-			if(item == Items.apple) return 1;
-			if(item == Items.saddle) return 1;
-			if(item == Items.fish) return 1;
-			if(itemstack == new ItemStack(Items.dye, 1, 0)) return 1;
-
-			if(item == Items.ender_pearl) return 1;
-			if(item == Items.gold_nugget) return 1;
-			if(item == Items.cooked_beef) return 1;
-			
-			if(item == Items.gunpowder) return 1;
-			if(item == Items.rotten_flesh) return 1;
-			if(item == Items.string) return 1;
-			if(item == Items.fermented_spider_eye) return 1;
-			if(item == Items.bone) return 1;
-			if(item == Item.getItemFromBlock(Blocks.stonebrick)) return 1;
-			if(item == Items.slime_ball) return 1;
-			if(item == Items.magma_cream) return 1;
-			if(item == Items.blaze_rod) return 1;
-			if(item == Items.ghast_tear) return 1;
-			if(item == Items.nether_wart) return 1;
-			
-			if(item == SummoningTable.itemSummoningCore) return 1;
-			if(item == Items.diamond) return 1;
-			
-			return 0;
-		}
-	}
-	public static boolean usedCrafting(ItemStack itemstack)
-	{
-		return isUsedInCrafting(itemstack) > 0;
+		return false;
 	}
 }

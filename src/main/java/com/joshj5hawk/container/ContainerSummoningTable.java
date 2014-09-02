@@ -78,7 +78,7 @@ public class ContainerSummoningTable extends Container {
 			else if (theSlot != 2 && theSlot != 0 && theSlot != 1)
 			{
 				// if it can be smelted, place in the input slots
-				if (SummoningRecipes.usedCrafting(itemstack))
+				if (SummoningRecipes.usedInCrafting(itemstack))
 				{
 					// try to place in either Input slot; add 1 to final input slot because mergeItemStack uses < index
 					if (!this.mergeItemStack(itemstack1, 0, 1 + 1, false))
