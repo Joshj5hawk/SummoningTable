@@ -166,7 +166,7 @@ public class SummoningRecipes
 	{
 		for(SummoningRecipe r : recipes)
 		{
-			if(ItemStack.areItemStacksEqual(itemstack, r.item1) || ItemStack.areItemStacksEqual(itemstack, r.item2))
+			if(itemstack.getItem() == r.item1.getItem() || (itemstack.getItem() == r.item2.getItem()))
 			{
 				return true;
 			}
