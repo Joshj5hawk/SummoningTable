@@ -3,6 +3,7 @@ package com.joshj5hawk.main;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.joshj5hawk.block.BlockSummoningTable;
 import com.joshj5hawk.handler.ConfigurationFile;
@@ -13,6 +14,7 @@ import com.joshj5hawk.lib.Strings;
 import com.joshj5hawk.proxies.CommonProxy;
 import com.joshj5hawk.recipies.STCraftingRecipies;
 import com.joshj5hawk.recipies.STSmeltingRecipies;
+import com.joshj5hawk.renderer.ItemRenderSummoningTable;
 import com.joshj5hawk.tileentity.TileEntitySummoningTable;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -52,7 +54,7 @@ public class SummoningTable
 	@Instance(Strings.modid)
 	public static SummoningTable instance;
 	
-	@SidedProxy(clientSide = "com.joshj5hawk.proxies.ClientProxy", serverSide = "com.joshj5hawk.CommonProxy")
+	@SidedProxy(clientSide = "com.joshj5hawk.proxies.ClientProxy", serverSide = "com.joshj5hawk.proxies.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler
@@ -64,6 +66,7 @@ public class SummoningTable
 		
 		//Renders
 		proxy.initRenderers();
+		
 		
 		//CreativeTab
 		tabSummoningTable = new CreativeTabs("tabSummoningTable")

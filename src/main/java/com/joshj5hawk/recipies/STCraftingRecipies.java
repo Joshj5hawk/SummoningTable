@@ -22,8 +22,10 @@ public class STCraftingRecipies
 	public static void shapedRecipies()
 	{
 		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemSummoningCore), new Object[] {"IDI", "DBD", "IDI", 'I', Items.iron_ingot, 'D', Items.diamond, 'B', Blocks.diamond_block});
-		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemPassiveCraftingOrb), new Object[] {"GPG", "SDC", "GBG", 'G', Blocks.glass, 'P', Items.porkchop, 'S', Items.mushroom_stew, 'C', Items.chicken, 'B', Items.beef, 'D', Items.diamond});
-		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemPassiveCraftingOrb), new Object[] {"GBG", "SDC", "GPG", 'G', Blocks.glass, 'P', Items.porkchop, 'S', Items.mushroom_stew, 'C', Items.chicken, 'B', Items.beef, 'D', Items.diamond});
+		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemPassiveCraftingOrb), new Object[] {"GPG", "SDC", "GBG", 'G', Blocks.glass, 'P', Items.porkchop, 'S', Blocks.red_mushroom, 'C', Items.chicken, 'B', Items.beef, 'D', Items.diamond});
+		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemPassiveCraftingOrb), new Object[] {"GBG", "SDC", "GPG", 'G', Blocks.glass, 'P', Items.porkchop, 'S', Blocks.red_mushroom, 'C', Items.chicken, 'B', Items.beef, 'D', Items.diamond});
+		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemPassiveCraftingOrb), new Object[] {"GPG", "SDC", "GBG", 'G', Blocks.glass, 'P', Items.porkchop, 'S', Blocks.brown_mushroom, 'C', Items.chicken, 'B', Items.beef, 'D', Items.diamond});
+		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemPassiveCraftingOrb), new Object[] {"GBG", "SDC", "GPG", 'G', Blocks.glass, 'P', Items.porkchop, 'S', Blocks.brown_mushroom, 'C', Items.chicken, 'B', Items.beef, 'D', Items.diamond});
 		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemNeutralCraftingOrb), new Object[] {"GIG", "EDL", "GAG", 'G', Blocks.glass, 'I', Blocks.iron_block, 'E', Items.ender_pearl, 'D', Items.diamond, 'L', Items.lead, 'A', Items.gold_ingot});
 		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemNeutralCraftingOrb), new Object[] {"GAG", "EDL", "GIG", 'G', Blocks.glass, 'I', Blocks.iron_block, 'E', Items.ender_pearl, 'D', Items.diamond, 'L', Items.lead, 'A', Items.gold_ingot});
 		GameRegistry.addRecipe(new ItemStack(SummoningTable.itemHostileCraftingOrb), new Object[] {"GFG", "BDE", "GSG", 'G', Blocks.glass, 'F', Items.rotten_flesh, 'B', Items.bone, 'E', Items.spider_eye, 'S', Items.gunpowder, 'D', Items.diamond});

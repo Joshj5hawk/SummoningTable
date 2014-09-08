@@ -1,9 +1,11 @@
 package com.joshj5hawk.renderer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -24,8 +26,8 @@ public class RenderSummoningTable extends TileEntitySpecialRenderer
 	private static final ResourceLocation circleTextureSmall = new ResourceLocation(Strings.modid + ":textures/others/summoningCircleSmall.png");
 	private ModelSummoningTable model;
 
-	public float yRotationAngle = 0.10F;
-	public float rotationSpeed = ConfigurationFile.summoningRotationSpeed;
+	public float yRotationAngle = (Minecraft.getSystemTime() % 720000L) / 10F;
+	public float rotationSpeed = 1.0F;
 	
 	public RenderSummoningTable()
 	{
@@ -35,16 +37,16 @@ public class RenderSummoningTable extends TileEntitySpecialRenderer
 	@Override
 	public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f) 
 	{
-		yRotationAngle += f * 3.0F;
-		if(yRotationAngle <= 360)
+		//yRotationAngle += f * (Minecraft.getSystemTime() % 7200L) / 7200F;
+		/*if(yRotationAngle <= 360)
 		{
 			yRotationAngle -= 360;
-		}
+		}*/
 		//Large Circle
 		GL11.glPushMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + .75F, (float)z + 0.5F);
-		GL11.glRotatef(yRotationAngle, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef((Minecraft.getSystemTime() % 720000L) / 100F, 0.0F, 1.0F, 0.0F);
 		t.startDrawingQuads();
 		this.bindTexture(circleTextureLarge);
 		t.addVertexWithUV(-0.375, 0, -0.375, 0, 0);
@@ -62,7 +64,7 @@ public class RenderSummoningTable extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + .8F, (float)z + 0.5F);
-		GL11.glRotatef(-yRotationAngle, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(-(Minecraft.getSystemTime() % 720000L) / 10F, 0.0F, 1.0F, 0.0F);
 		t.startDrawingQuads();
 		this.bindTexture(circleTextureLarge);
 		t.addVertexWithUV(-0.25, 0, -0.25, 0, 0);
@@ -80,7 +82,7 @@ public class RenderSummoningTable extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + .9F, (float)z + 0.5F);
-		GL11.glRotatef(yRotationAngle, 1.0F, 1.0F, 0.0F);
+		GL11.glRotatef((Minecraft.getSystemTime() % 720000L) / 10F, 1.0F, 1.0F, 0.0F);
 		t.startDrawingQuads();
 		this.bindTexture(circleTextureLarge);
 		t.addVertexWithUV(-0.175, 0, -0.175, 0, 0);
@@ -98,7 +100,7 @@ public class RenderSummoningTable extends TileEntitySpecialRenderer
 		GL11.glPushMatrix();
 		RenderHelper.disableStandardItemLighting();
 		GL11.glTranslatef((float)x + 0.5F, (float)y + .9F, (float)z + 0.5F);
-		GL11.glRotatef(-yRotationAngle, 0.0F, 1.0F, 1.0F);
+		GL11.glRotatef(-(Minecraft.getSystemTime() % 720000L) / 10F, 0.0F, 1.0F, 1.0F);
 		t.startDrawingQuads();
 		this.bindTexture(circleTextureLarge);
 		t.addVertexWithUV(-0.075, 0, -0.075, 0, 0);
@@ -120,10 +122,5 @@ public class RenderSummoningTable extends TileEntitySpecialRenderer
 		this.model.renderModel(0.0625F);
 		RenderHelper.enableStandardItemLighting();
 		GL11.glPopMatrix();
-	}
-	
-	public void renderCircle(Entity entity, double x, double y, double z, float yaw, float pitch)
-	{
-		
 	}
 }

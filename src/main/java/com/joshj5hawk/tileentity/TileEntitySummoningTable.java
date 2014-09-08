@@ -381,6 +381,5 @@ public class TileEntitySummoningTable extends TileEntity implements ISidedInvent
 		{
 			this.markDirty();
 		}
-    }
-
+	}
 }

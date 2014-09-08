@@ -3,7 +3,6 @@ package com.joshj5hawk.proxies;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
 
 import com.joshj5hawk.main.SummoningTable;
 import com.joshj5hawk.renderer.ItemRenderSummoningTable;
@@ -25,9 +24,8 @@ public class ClientProxy extends CommonProxy
 	{
 		//SummoningTable
 		TileEntitySpecialRenderer render = new RenderSummoningTable();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySummoningTable.class, render);
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySummoningTable.class, new RenderSummoningTable());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SummoningTable.blockSummoningTableIdle), new ItemRenderSummoningTable());
 		
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SummoningTable.blockSummoningTableIdle), new ItemRenderSummoningTable(render, new TileEntitySummoningTable()));
-	
 	}
 }

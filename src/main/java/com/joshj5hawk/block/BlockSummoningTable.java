@@ -40,6 +40,7 @@ public class BlockSummoningTable extends BlockContainer
 		super(Material.rock);
 		rand = new Random();
 		isActive = blockState;
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.625F, 1.0F);
 	}
 
 	public int getRenderType()
@@ -62,14 +63,14 @@ public class BlockSummoningTable extends BlockContainer
 	{
 		this.blockIcon = iconRegister.registerIcon(Strings.modid + ":iconTableSide");
 		this.iconTop = iconRegister.registerIcon(Strings.modid + ":iconTableTop");
-	}
+	}*/
 	
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
 		return side == 1 ? this.iconTop : (side == 0 ? Blocks.planks.getBlockTextureFromSide(side) : this.blockIcon);
 		//return meta == 0 && side == 3 ? this.iconTop : (side == meta ? this.iconTop : this.blockIcon);
-	}*/
+	}
 	
 	public void onBlockAdded(World world, int x, int y, int z)
 	{
