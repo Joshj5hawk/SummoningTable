@@ -25,7 +25,7 @@ public class ClientProxy extends CommonProxy
 		//SummoningTable
 		TileEntitySpecialRenderer render = new RenderSummoningTable();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySummoningTable.class, new RenderSummoningTable());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SummoningTable.blockSummoningTableIdle), new ItemRenderSummoningTable());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SummoningTable.blockSummoningTableIdle), new ItemRenderSummoningTable(render, new TileEntitySummoningTable()));
 		
 	}
 }

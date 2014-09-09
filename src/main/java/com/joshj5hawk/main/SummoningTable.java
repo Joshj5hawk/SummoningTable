@@ -112,6 +112,10 @@ public class SummoningTable
 		
 		//TileEntity
 		GameRegistry.registerTileEntity(TileEntitySummoningTable.class, "summoningTable");
+		
+		//Renders
+		proxy.initRenderers();
+				
 	}
 	
 	@EventHandler
@@ -123,6 +127,7 @@ public class SummoningTable
 		STSmeltingRecipies.mainRegistry();
 		//Fuel Handler
 		GameRegistry.registerFuelHandler(new STFuelHandler());
+		
 	}
 	
 	@EventHandler
