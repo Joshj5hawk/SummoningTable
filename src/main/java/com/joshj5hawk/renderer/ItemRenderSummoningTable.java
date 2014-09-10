@@ -1,19 +1,34 @@
 package com.joshj5hawk.renderer;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
+import com.joshj5hawk.lib.Strings;
+import com.joshj5hawk.model.ModelSummoningTable;
+import com.joshj5hawk.tileentity.TileEntitySummoningTable;
+
 public class ItemRenderSummoningTable implements IItemRenderer
 {
 
-	TileEntitySpecialRenderer render;
-	private TileEntity entity;
+Tessellator t = Tessellator.instance;
 	
-	public ItemRenderSummoningTable(TileEntitySpecialRenderer render, TileEntity entity)
+	private static final ResourceLocation texture = new ResourceLocation(Strings.modid + ":textures/models/summoningTableModel.png");
+	private static final ResourceLocation circleTextureLarge = new ResourceLocation(Strings.modid + ":textures/others/summoningCircleLarge.png");
+	private static final ResourceLocation circleTextureMedium = new ResourceLocation(Strings.modid + ":textures/others/summoningCircleMedium.png");
+	private static final ResourceLocation circleTextureSmall = new ResourceLocation(Strings.modid + ":textures/others/summoningCircleSmall.png");
+	ModelSummoningTable model = new ModelSummoningTable();
+	
+	TileEntitySpecialRenderer render;
+	
+	public ItemRenderSummoningTable()
 	{
 	}
 	@Override
@@ -31,11 +46,92 @@ public class ItemRenderSummoningTable implements IItemRenderer
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) 
 	{
-		if(type == IItemRenderer.ItemRenderType.EQUIPPED_FIRST_PERSON)
-		{
-			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
-			this.render.renderTileEntityAt(this.entity, 0.0D, 0.0D, 0.0D, 0.0F);
+			double x = 0;
+			double y = 0;
+			double z = 0;
+			//Large Circle
+			/*GL11.glPushMatrix();
+			RenderHelper.disableStandardItemLighting();
+			GL11.glTranslatef((float)x + 0.5F, (float)y + .75F, (float)z + 0.5F);
+			GL11.glRotatef((Minecraft.getSystemTime() % 720000L) / 100F, 0.0F, 1.0F, 0.0F);
+			t.startDrawingQuads();
+			Minecraft.getMinecraft().renderEngine.bindTexture(circleTextureLarge);
+			t.addVertexWithUV(-0.375, 0, -0.375, 0, 0);
+			t.addVertexWithUV(-0.375, 0, 0.375, 0, 1);
+			t.addVertexWithUV(0.375, 0, 0.375, 1, 1);
+			t.addVertexWithUV(0.375, 0, -0.375, 1, 0);
+			
+			t.addVertexWithUV(0.375, 0, -0.375, 0, 0);
+			t.addVertexWithUV(0.375, 0, 0.375, 1, 0);
+			t.addVertexWithUV(-0.375, 0, 0.375, 1, 1);
+			t.addVertexWithUV(-0.375, 0, -0.375, 0, 1);
+			t.draw();
+			GL11.glPopMatrix();
+			*/
+			//Medium Large Circle
+			/*GL11.glPushMatrix();
+			RenderHelper.disableStandardItemLighting();
+			GL11.glTranslatef((float)x + 0.5F, (float)y + .8F, (float)z + 0.5F);
+			GL11.glRotatef(-(Minecraft.getSystemTime() % 720000L) / 10F, 0.0F, 1.0F, 0.0F);
+			t.startDrawingQuads();
+			Minecraft.getMinecraft().renderEngine.bindTexture(circleTextureLarge);
+			t.addVertexWithUV(-0.25, 0, -0.25, 0, 0);
+			t.addVertexWithUV(-0.25, 0, 0.25, 0, 1);
+			t.addVertexWithUV(0.25, 0, 0.25, 1, 1);
+			t.addVertexWithUV(0.25, 0, -0.25, 1, 0);
+			
+			t.addVertexWithUV(0.25, 0, -0.25, 0, 0);
+			t.addVertexWithUV(0.25, 0, 0.25, 1, 0);
+			t.addVertexWithUV(-0.25, 0, 0.25, 1, 1);
+			t.addVertexWithUV(-0.25, 0, -0.25, 0, 1);
+			t.draw();
+			GL11.glPopMatrix();*/
+			//Medium Circle
+			/*GL11.glPushMatrix();
+			RenderHelper.disableStandardItemLighting();
+			GL11.glTranslatef((float)x + 0.5F, (float)y + .9F, (float)z + 0.5F);
+			GL11.glRotatef((Minecraft.getSystemTime() % 720000L) / 10F, 1.0F, 1.0F, 0.0F);
+			t.startDrawingQuads();
+			Minecraft.getMinecraft().renderEngine.bindTexture(circleTextureLarge);
+			t.addVertexWithUV(-0.175, 0, -0.175, 0, 0);
+			t.addVertexWithUV(-0.175, 0, 0.175, 0, 1);
+			t.addVertexWithUV(0.175, 0, 0.175, 1, 1);
+			t.addVertexWithUV(0.175, 0, -0.175, 1, 0);
+			
+			t.addVertexWithUV(0.175, 0, -0.175, 0, 0);
+			t.addVertexWithUV(0.175, 0, 0.175, 1, 0);
+			t.addVertexWithUV(-0.175, 0, 0.175, 1, 1);
+			t.addVertexWithUV(-0.175, 0, -0.175, 0, 1);
+			t.draw();
+			GL11.glPopMatrix();
+			*/
+			//Small Circle
+			/*GL11.glPushMatrix();
+			RenderHelper.disableStandardItemLighting();
+			GL11.glTranslatef((float)x + 0.5F, (float)y + .9F, (float)z + 0.5F);
+			GL11.glRotatef(-(Minecraft.getSystemTime() % 720000L) / 10F, 0.0F, 1.0F, 1.0F);
+			t.startDrawingQuads();
+			Minecraft.getMinecraft().renderEngine.bindTexture(circleTextureLarge);
+			t.addVertexWithUV(-0.075, 0, -0.075, 0, 0);
+			t.addVertexWithUV(-0.075, 0, 0.075, 0, 1);
+			t.addVertexWithUV(0.075, 0, 0.075, 1, 1);
+			t.addVertexWithUV(0.075, 0, -0.075, 1, 0);
+			
+			t.addVertexWithUV(0.075, 0, -0.075, 0, 0);
+			t.addVertexWithUV(0.075, 0, 0.075, 1, 0);
+			t.addVertexWithUV(-0.075, 0, 0.075, 1, 1);
+			t.addVertexWithUV(-0.075, 0, -0.075, 0, 1);
+			t.draw();
+			GL11.glPopMatrix();
+			*/
+			//Table
+			GL11.glPushMatrix();
+			GL11.glTranslatef((float)x + 0.5F, (float)y + 1.5F, (float)z + 0.5F);
+			GL11.glRotatef(180, 0F, 0F, 1F);
+			Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+			model.renderModel(0.0625F);
+			RenderHelper.enableStandardItemLighting();
+			GL11.glPopMatrix();
 		}
-	}
 
 }

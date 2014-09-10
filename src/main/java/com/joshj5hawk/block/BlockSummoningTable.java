@@ -58,12 +58,12 @@ public class BlockSummoningTable extends BlockContainer
 		return false;
 	}
 	
-	/*@SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon(Strings.modid + ":iconTableSide");
 		this.iconTop = iconRegister.registerIcon(Strings.modid + ":iconTableTop");
-	}*/
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
