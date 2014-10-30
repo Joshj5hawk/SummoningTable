@@ -1,11 +1,8 @@
 package com.joshj5hawk.handler;
 
 import java.io.File;
-
 import net.minecraftforge.common.config.Configuration;
-
 import com.joshj5hawk.lib.Strings;
-
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
