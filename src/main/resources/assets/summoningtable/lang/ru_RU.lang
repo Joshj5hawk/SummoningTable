@@ -1,0 +1,15 @@
+itemGroup.tabSummoningTable=SummoningTable
+
+item.itemSummoningBook.name=Книга призыва
+
+item.itemPassiveCraftingOrb.name=Пассивный шар создания
+item.itemNeutralCraftingOrb.name=Обычный шар создания
+item.itemHostileCraftingOrb.name=Враждебный шар создания
+item.itemSummoningCore.name=Ядро призыва
+item.itemStackOfBooks.name=Стопка книг
+
+tile.blockSummoningTableIdle.name=Стол призыва
+container.summoningTable=Стол призыва
+
+st.tooltip.spawns=Призывает
+st.tooltip.usesLeft=Использований осталось
