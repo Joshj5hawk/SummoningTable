@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0"
-group= "com.joshj5hawk.summoningtable" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "SummoningTable"
+version = "1.0"
+group= "com.joshj5hawk.com" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "summoningtable"
 
 minecraft {
-    version = "1.7.10-10.13.0.1180"
+    version = "1.7.10-10.13.2.1230"
     if (file('../run').exists()){
 		assetDir = "../run/assets"
 	} else {

@@ -13,3 +13,8 @@
 /.gradle
 /.settings
 /libs
+
+/mods
+/config
+/logs
+/saves
